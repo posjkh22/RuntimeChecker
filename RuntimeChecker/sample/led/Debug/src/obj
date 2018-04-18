@@ -1,0 +1,321 @@
+
+main.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <main>:
+   0:	b5b0      	push	{r4, r5, r7, lr}
+   2:	af02      	add	r7, sp, #8
+   4:	b092      	sub	sp, #72	; 0x48
+   6:	2400      	movs	r4, #0
+   8:	9411      	str	r4, [sp, #68]	; 0x44
+   a:	9010      	str	r0, [sp, #64]	; 0x40
+   c:	910e      	str	r1, [sp, #56]	; 0x38
+   e:	2007      	movs	r0, #7
+  10:	2105      	movs	r1, #5
+  12:	f7ff fffe 	bl	0 <_Z5adderii>
+  16:	900d      	str	r0, [sp, #52]	; 0x34
+  18:	f7ff fffe 	bl	0 <_Z7checkerv>
+  1c:	990d      	ldr	r1, [sp, #52]	; 0x34
+  1e:	f240 0000 	movw	r0, #0
+  22:	f2c0 0000 	movt	r0, #0
+  26:	f7ff fffe 	bl	0 <trace_printf>
+  2a:	f240 0000 	movw	r0, #0
+  2e:	f2c0 0000 	movt	r0, #0
+  32:	f7ff fffe 	bl	0 <trace_puts>
+  36:	f240 0000 	movw	r0, #0
+  3a:	f2c0 0000 	movt	r0, #0
+  3e:	6801      	ldr	r1, [r0, #0]
+  40:	f240 0000 	movw	r0, #0
+  44:	f2c0 0000 	movt	r0, #0
+  48:	f7ff fffe 	bl	0 <trace_printf>
+  4c:	a80c      	add	r0, sp, #48	; 0x30
+  4e:	f7ff fffe 	bl	0 <main>
+  52:	940b      	str	r4, [sp, #44]	; 0x2c
+  54:	940a      	str	r4, [sp, #40]	; 0x28
+  56:	e7ff      	b.n	58 <main+0x58>
+  58:	980a      	ldr	r0, [sp, #40]	; 0x28
+  5a:	990b      	ldr	r1, [sp, #44]	; 0x2c
+  5c:	f1d0 0003 	rsbs	r0, r0, #3
+  60:	f04f 0000 	mov.w	r0, #0
+  64:	4188      	sbcs	r0, r1
+  66:	d312      	bcc.n	8e <main+0x8e>
+  68:	e7ff      	b.n	6a <main+0x6a>
+  6a:	980a      	ldr	r0, [sp, #40]	; 0x28
+  6c:	f240 0100 	movw	r1, #0
+  70:	f2c0 0100 	movt	r1, #0
+  74:	eb01 1000 	add.w	r0, r1, r0, lsl #4
+  78:	f7ff fffe 	bl	0 <_ZN8BlinkLed7powerUpEv>
+  7c:	e7ff      	b.n	7e <main+0x7e>
+  7e:	980a      	ldr	r0, [sp, #40]	; 0x28
+  80:	990b      	ldr	r1, [sp, #44]	; 0x2c
+  82:	3001      	adds	r0, #1
+  84:	f141 0100 	adc.w	r1, r1, #0
+  88:	900a      	str	r0, [sp, #40]	; 0x28
+  8a:	910b      	str	r1, [sp, #44]	; 0x2c
+  8c:	e7e4      	b.n	58 <main+0x58>
+  8e:	2000      	movs	r0, #0
+  90:	9009      	str	r0, [sp, #36]	; 0x24
+  92:	9007      	str	r0, [sp, #28]
+  94:	9006      	str	r0, [sp, #24]
+  96:	e7ff      	b.n	98 <main+0x98>
+  98:	9806      	ldr	r0, [sp, #24]
+  9a:	9907      	ldr	r1, [sp, #28]
+  9c:	f1d0 0003 	rsbs	r0, r0, #3
+  a0:	f04f 0000 	mov.w	r0, #0
+  a4:	4188      	sbcs	r0, r1
+  a6:	d312      	bcc.n	ce <main+0xce>
+  a8:	e7ff      	b.n	aa <main+0xaa>
+  aa:	9806      	ldr	r0, [sp, #24]
+  ac:	f240 0100 	movw	r1, #0
+  b0:	f2c0 0100 	movt	r1, #0
+  b4:	eb01 1000 	add.w	r0, r1, r0, lsl #4
+  b8:	f7ff fffe 	bl	0 <_ZN8BlinkLed6turnOnEv>
+  bc:	e7ff      	b.n	be <main+0xbe>
+  be:	9806      	ldr	r0, [sp, #24]
+  c0:	9907      	ldr	r1, [sp, #28]
+  c2:	3001      	adds	r0, #1
+  c4:	f141 0100 	adc.w	r1, r1, #0
+  c8:	9006      	str	r0, [sp, #24]
+  ca:	9107      	str	r1, [sp, #28]
+  cc:	e7e4      	b.n	98 <main+0x98>
+  ce:	a80c      	add	r0, sp, #48	; 0x30
+  d0:	f44f 717a 	mov.w	r1, #1000	; 0x3e8
+  d4:	f7ff fffe 	bl	0 <_ZN5Timer5sleepEm>
+  d8:	2000      	movs	r0, #0
+  da:	9005      	str	r0, [sp, #20]
+  dc:	9004      	str	r0, [sp, #16]
+  de:	e7ff      	b.n	e0 <main+0xe0>
+  e0:	9804      	ldr	r0, [sp, #16]
+  e2:	9905      	ldr	r1, [sp, #20]
+  e4:	f1d0 0003 	rsbs	r0, r0, #3
+  e8:	f04f 0000 	mov.w	r0, #0
+  ec:	4188      	sbcs	r0, r1
+  ee:	d312      	bcc.n	116 <main+0x116>
+  f0:	e7ff      	b.n	f2 <main+0xf2>
+  f2:	9804      	ldr	r0, [sp, #16]
+  f4:	f240 0100 	movw	r1, #0
+  f8:	f2c0 0100 	movt	r1, #0
+  fc:	eb01 1000 	add.w	r0, r1, r0, lsl #4
+ 100:	f7ff fffe 	bl	0 <_ZN8BlinkLed7turnOffEv>
+ 104:	e7ff      	b.n	106 <main+0x106>
+ 106:	9804      	ldr	r0, [sp, #16]
+ 108:	9905      	ldr	r1, [sp, #20]
+ 10a:	3001      	adds	r0, #1
+ 10c:	f141 0100 	adc.w	r1, r1, #0
+ 110:	9004      	str	r0, [sp, #16]
+ 112:	9105      	str	r1, [sp, #20]
+ 114:	e7e4      	b.n	e0 <main+0xe0>
+ 116:	a80c      	add	r0, sp, #48	; 0x30
+ 118:	21fa      	movs	r1, #250	; 0xfa
+ 11a:	f7ff fffe 	bl	0 <_ZN5Timer5sleepEm>
+ 11e:	9809      	ldr	r0, [sp, #36]	; 0x24
+ 120:	3001      	adds	r0, #1
+ 122:	9009      	str	r0, [sp, #36]	; 0x24
+ 124:	9909      	ldr	r1, [sp, #36]	; 0x24
+ 126:	f240 0000 	movw	r0, #0
+ 12a:	f2c0 0000 	movt	r0, #0
+ 12e:	f7ff fffe 	bl	0 <trace_printf>
+ 132:	2000      	movs	r0, #0
+ 134:	9003      	str	r0, [sp, #12]
+ 136:	9002      	str	r0, [sp, #8]
+ 138:	e7ff      	b.n	13a <main+0x13a>
+ 13a:	9802      	ldr	r0, [sp, #8]
+ 13c:	9903      	ldr	r1, [sp, #12]
+ 13e:	f1d0 0003 	rsbs	r0, r0, #3
+ 142:	f04f 0000 	mov.w	r0, #0
+ 146:	4188      	sbcs	r0, r1
+ 148:	d32b      	bcc.n	1a2 <main+0x1a2>
+ 14a:	e7ff      	b.n	14c <main+0x14c>
+ 14c:	9802      	ldr	r0, [sp, #8]
+ 14e:	f240 0500 	movw	r5, #0
+ 152:	f2c0 0500 	movt	r5, #0
+ 156:	eb05 1000 	add.w	r0, r5, r0, lsl #4
+ 15a:	f7ff fffe 	bl	0 <_ZN8BlinkLed6turnOnEv>
+ 15e:	ac0c      	add	r4, sp, #48	; 0x30
+ 160:	4620      	mov	r0, r4
+ 162:	f240 21ee 	movw	r1, #750	; 0x2ee
+ 166:	f7ff fffe 	bl	0 <_ZN5Timer5sleepEm>
+ 16a:	9802      	ldr	r0, [sp, #8]
+ 16c:	eb05 1000 	add.w	r0, r5, r0, lsl #4
+ 170:	f7ff fffe 	bl	0 <_ZN8BlinkLed7turnOffEv>
+ 174:	4620      	mov	r0, r4
+ 176:	21fa      	movs	r1, #250	; 0xfa
+ 178:	f7ff fffe 	bl	0 <_ZN5Timer5sleepEm>
+ 17c:	9809      	ldr	r0, [sp, #36]	; 0x24
+ 17e:	3001      	adds	r0, #1
+ 180:	9009      	str	r0, [sp, #36]	; 0x24
+ 182:	9909      	ldr	r1, [sp, #36]	; 0x24
+ 184:	f240 0000 	movw	r0, #0
+ 188:	f2c0 0000 	movt	r0, #0
+ 18c:	f7ff fffe 	bl	0 <trace_printf>
+ 190:	e7ff      	b.n	192 <main+0x192>
+ 192:	9802      	ldr	r0, [sp, #8]
+ 194:	9903      	ldr	r1, [sp, #12]
+ 196:	3001      	adds	r0, #1
+ 198:	f141 0100 	adc.w	r1, r1, #0
+ 19c:	9002      	str	r0, [sp, #8]
+ 19e:	9103      	str	r1, [sp, #12]
+ 1a0:	e7cb      	b.n	13a <main+0x13a>
+ 1a2:	e7ff      	b.n	1a4 <main+0x1a4>
+ 1a4:	2000      	movs	r0, #0
+ 1a6:	9001      	str	r0, [sp, #4]
+ 1a8:	9000      	str	r0, [sp, #0]
+ 1aa:	e7ff      	b.n	1ac <main+0x1ac>
+ 1ac:	9800      	ldr	r0, [sp, #0]
+ 1ae:	9901      	ldr	r1, [sp, #4]
+ 1b0:	f1d0 0003 	rsbs	r0, r0, #3
+ 1b4:	f04f 0000 	mov.w	r0, #0
+ 1b8:	4188      	sbcs	r0, r1
+ 1ba:	d31b      	bcc.n	1f4 <main+0x1f4>
+ 1bc:	e7ff      	b.n	1be <main+0x1be>
+ 1be:	9800      	ldr	r0, [sp, #0]
+ 1c0:	f240 0400 	movw	r4, #0
+ 1c4:	f2c0 0400 	movt	r4, #0
+ 1c8:	eb04 1000 	add.w	r0, r4, r0, lsl #4
+ 1cc:	f7ff fffe 	bl	0 <_ZN8BlinkLed6toggleEv>
+ 1d0:	9800      	ldr	r0, [sp, #0]
+ 1d2:	eb04 1000 	add.w	r0, r4, r0, lsl #4
+ 1d6:	f7ff fffe 	bl	0 <_ZN8BlinkLed4isOnEv>
+ 1da:	2801      	cmp	r0, #1
+ 1dc:	d101      	bne.n	1e2 <main+0x1e2>
+ 1de:	e7ff      	b.n	1e0 <main+0x1e0>
+ 1e0:	e009      	b.n	1f6 <main+0x1f6>
+ 1e2:	e7ff      	b.n	1e4 <main+0x1e4>
+ 1e4:	9800      	ldr	r0, [sp, #0]
+ 1e6:	9901      	ldr	r1, [sp, #4]
+ 1e8:	3001      	adds	r0, #1
+ 1ea:	f141 0100 	adc.w	r1, r1, #0
+ 1ee:	9000      	str	r0, [sp, #0]
+ 1f0:	9101      	str	r1, [sp, #4]
+ 1f2:	e7db      	b.n	1ac <main+0x1ac>
+ 1f4:	e7ff      	b.n	1f6 <main+0x1f6>
+ 1f6:	a80c      	add	r0, sp, #48	; 0x30
+ 1f8:	f44f 717a 	mov.w	r1, #1000	; 0x3e8
+ 1fc:	f7ff fffe 	bl	0 <_ZN5Timer5sleepEm>
+ 200:	9809      	ldr	r0, [sp, #36]	; 0x24
+ 202:	3001      	adds	r0, #1
+ 204:	9009      	str	r0, [sp, #36]	; 0x24
+ 206:	9909      	ldr	r1, [sp, #36]	; 0x24
+ 208:	f240 0000 	movw	r0, #0
+ 20c:	f2c0 0000 	movt	r0, #0
+ 210:	f7ff fffe 	bl	0 <trace_printf>
+ 214:	e7c6      	b.n	1a4 <main+0x1a4>
+
+00000216 <_ZL14SysTick_Configj>:
+ 216:	b580      	push	{r7, lr}
+ 218:	466f      	mov	r7, sp
+ 21a:	b082      	sub	sp, #8
+ 21c:	9000      	str	r0, [sp, #0]
+ 21e:	9800      	ldr	r0, [sp, #0]
+ 220:	3801      	subs	r0, #1
+ 222:	f04f 0100 	mov.w	r1, #0
+ 226:	f161 0100 	sbc.w	r1, r1, #0
+ 22a:	f1b0 7080 	subs.w	r0, r0, #16777216	; 0x1000000
+ 22e:	f171 0000 	sbcs.w	r0, r1, #0
+ 232:	d303      	bcc.n	23c <_ZL14SysTick_Configj+0x26>
+ 234:	e7ff      	b.n	236 <_ZL14SysTick_Configj+0x20>
+ 236:	2001      	movs	r0, #1
+ 238:	9001      	str	r0, [sp, #4]
+ 23a:	e019      	b.n	270 <_ZL14SysTick_Configj+0x5a>
+ 23c:	9800      	ldr	r0, [sp, #0]
+ 23e:	3801      	subs	r0, #1
+ 240:	f24e 0114 	movw	r1, #57364	; 0xe014
+ 244:	f2ce 0100 	movt	r1, #57344	; 0xe000
+ 248:	6008      	str	r0, [r1, #0]
+ 24a:	f04f 30ff 	mov.w	r0, #4294967295	; 0xffffffff
+ 24e:	210f      	movs	r1, #15
+ 250:	f000 f811 	bl	276 <_ZL16NVIC_SetPriority9IRQn_Typej>
+ 254:	f24e 0018 	movw	r0, #57368	; 0xe018
+ 258:	f2ce 0000 	movt	r0, #57344	; 0xe000
+ 25c:	2100      	movs	r1, #0
+ 25e:	6001      	str	r1, [r0, #0]
+ 260:	f24e 0010 	movw	r0, #57360	; 0xe010
+ 264:	f2ce 0000 	movt	r0, #57344	; 0xe000
+ 268:	2207      	movs	r2, #7
+ 26a:	6002      	str	r2, [r0, #0]
+ 26c:	9101      	str	r1, [sp, #4]
+ 26e:	e7ff      	b.n	270 <_ZL14SysTick_Configj+0x5a>
+ 270:	9801      	ldr	r0, [sp, #4]
+ 272:	b002      	add	sp, #8
+ 274:	bd80      	pop	{r7, pc}
+
+00000276 <_ZL16NVIC_SetPriority9IRQn_Typej>:
+ 276:	b082      	sub	sp, #8
+ 278:	9001      	str	r0, [sp, #4]
+ 27a:	9100      	str	r1, [sp, #0]
+ 27c:	9801      	ldr	r0, [sp, #4]
+ 27e:	f1b0 3fff 	cmp.w	r0, #4294967295	; 0xffffffff
+ 282:	dc0b      	bgt.n	29c <_ZL16NVIC_SetPriority9IRQn_Typej+0x26>
+ 284:	e7ff      	b.n	286 <_ZL16NVIC_SetPriority9IRQn_Typej+0x10>
+ 286:	9800      	ldr	r0, [sp, #0]
+ 288:	0100      	lsls	r0, r0, #4
+ 28a:	9901      	ldr	r1, [sp, #4]
+ 28c:	f001 010f 	and.w	r1, r1, #15
+ 290:	f64e 5214 	movw	r2, #60692	; 0xed14
+ 294:	f2ce 0200 	movt	r2, #57344	; 0xe000
+ 298:	5488      	strb	r0, [r1, r2]
+ 29a:	e008      	b.n	2ae <_ZL16NVIC_SetPriority9IRQn_Typej+0x38>
+ 29c:	9800      	ldr	r0, [sp, #0]
+ 29e:	0100      	lsls	r0, r0, #4
+ 2a0:	9901      	ldr	r1, [sp, #4]
+ 2a2:	f24e 4200 	movw	r2, #58368	; 0xe400
+ 2a6:	f2ce 0200 	movt	r2, #57344	; 0xe000
+ 2aa:	5488      	strb	r0, [r1, r2]
+ 2ac:	e7ff      	b.n	2ae <_ZL16NVIC_SetPriority9IRQn_Typej+0x38>
+ 2ae:	b002      	add	sp, #8
+ 2b0:	4770      	bx	lr
+
+Disassembly of section .text.startup:
+
+00000000 <__cxx_global_var_init>:
+   0:	b5d0      	push	{r4, r6, r7, lr}
+   2:	af02      	add	r7, sp, #8
+   4:	f240 0400 	movw	r4, #0
+   8:	2103      	movs	r1, #3
+   a:	220c      	movs	r2, #12
+   c:	2300      	movs	r3, #0
+   e:	f2c0 0400 	movt	r4, #0
+  12:	4620      	mov	r0, r4
+  14:	f7ff fffe 	bl	0 <_ZN8BlinkLedC1Ejjb>
+  18:	f104 0010 	add.w	r0, r4, #16
+  1c:	2103      	movs	r1, #3
+  1e:	220d      	movs	r2, #13
+  20:	2300      	movs	r3, #0
+  22:	f7ff fffe 	bl	0 <_ZN8BlinkLedC1Ejjb>
+  26:	f104 0020 	add.w	r0, r4, #32
+  2a:	2103      	movs	r1, #3
+  2c:	220e      	movs	r2, #14
+  2e:	2300      	movs	r3, #0
+  30:	f7ff fffe 	bl	0 <_ZN8BlinkLedC1Ejjb>
+  34:	f104 0030 	add.w	r0, r4, #48	; 0x30
+  38:	2103      	movs	r1, #3
+  3a:	220f      	movs	r2, #15
+  3c:	2300      	movs	r3, #0
+  3e:	f7ff fffe 	bl	0 <_ZN8BlinkLedC1Ejjb>
+  42:	bdd0      	pop	{r4, r6, r7, pc}
+
+00000044 <_GLOBAL__sub_I_main.cpp>:
+  44:	b580      	push	{r7, lr}
+  46:	466f      	mov	r7, sp
+  48:	f7ff ffda 	bl	0 <__cxx_global_var_init>
+  4c:	bd80      	pop	{r7, pc}
+
+Disassembly of section .text._ZN5Timer5startEv:
+
+00000000 <_ZN5Timer5startEv>:
+   0:	b580      	push	{r7, lr}
+   2:	466f      	mov	r7, sp
+   4:	b082      	sub	sp, #8
+   6:	9000      	str	r0, [sp, #0]
+   8:	f240 0000 	movw	r0, #0
+   c:	f2c0 0000 	movt	r0, #0
+  10:	6800      	ldr	r0, [r0, #0]
+  12:	f644 51d3 	movw	r1, #19923	; 0x4dd3
+  16:	f2c1 0162 	movt	r1, #4194	; 0x1062
+  1a:	fba0 0101 	umull	r0, r1, r0, r1
+  1e:	0988      	lsrs	r0, r1, #6
+  20:	f7ff fffe 	bl	216 <_ZL14SysTick_Configj>
+  24:	b002      	add	sp, #8
+  26:	bd80      	pop	{r7, pc}

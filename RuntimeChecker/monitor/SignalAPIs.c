@@ -52,7 +52,8 @@ void sig_debug()
 
 	else
 	{
-		for(int i=0; i < current_size_sig_queue; i++)
+		int i;
+		for(i=0; i < current_size_sig_queue; i++)
 		{
 			printf("signal %x ", sig_queue[i]);
 		}

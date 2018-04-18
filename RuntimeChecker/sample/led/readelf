@@ -1,0 +1,266 @@
+ELF Header:
+  Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00 
+  Class:                             ELF32
+  Data:                              2's complement, little endian
+  Version:                           1 (current)
+  OS/ABI:                            UNIX - System V
+  ABI Version:                       0
+  Type:                              REL (Relocatable file)
+  Machine:                           ARM
+  Version:                           0x1
+  Entry point address:               0x0
+  Start of program headers:          0 (bytes into file)
+  Start of section headers:          3140 (bytes into file)
+  Flags:                             0x5000000, Version5 EABI
+  Size of this header:               52 (bytes)
+  Size of program headers:           0 (bytes)
+  Number of program headers:         0
+  Size of section headers:           40 (bytes)
+  Number of section headers:         28
+  Section header string table index: 25
+
+Section Headers:
+  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
+  [ 0]                   NULL            00000000 000000 000000 00      0   0  0
+  [ 1] .group            GROUP           00000000 000034 000010 04     26  43  4
+  [ 2] .text             PROGBITS        00000000 000044 0002ae 00  AX  0   0  2
+  [ 3] .rel.text         REL             00000000 000908 000160 08   I 26   2  4
+  [ 4] .data             PROGBITS        00000000 0002f2 000000 00  WA  0   0  1
+  [ 5] .bss              NOBITS          00000000 000300 000040 00  WA  0   0 16
+  [ 6] .text.startup     PROGBITS        00000000 000300 00004e 00  AX  0   0  2
+  [ 7] .rel.text.startup REL             00000000 000a68 000030 08   I 26   6  4
+  [ 8] .ARM.extab.text.s PROGBITS        00000000 00034e 000000 00   A  0   0  1
+  [ 9] .ARM.exidx.text.s ARM_EXIDX       00000000 000350 000010 00  AL  6   0  4
+  [10] .rel.ARM.exidx.te REL             00000000 000a98 000018 08   I 26   9  4
+  [11] .ARM.extab        PROGBITS        00000000 000360 000000 00   A  0   0  1
+  [12] .ARM.exidx        ARM_EXIDX       00000000 000360 000018 00  AL  2   0  4
+  [13] .rel.ARM.exidx    REL             00000000 000ab0 000020 08   I 26  12  4
+  [14] .text._ZN5Timer5s PROGBITS        00000000 000378 000028 00 AXG  0   0  2
+  [15] .rel.text._ZN5Tim REL             00000000 000ad0 000018 08   I 26  14  4
+  [16] .ARM.extab.text._ PROGBITS        00000000 0003a0 000000 00  AG  0   0  1
+  [17] .ARM.exidx.text._ ARM_EXIDX       00000000 0003a0 000008 00 ALG 14   0  4
+  [18] .rel.ARM.exidx.te REL             00000000 000ae8 000010 08   I 26  17  4
+  [19] .rodata.str1.1    PROGBITS        00000000 0003a8 00003d 01 AMS  0   0  1
+  [20] .init_array       INIT_ARRAY      00000000 0003e8 000004 00  WA  0   0  4
+  [21] .rel.init_array   REL             00000000 000af8 000008 08   I 26  20  4
+  [22] .comment          PROGBITS        00000000 0003ec 00002e 01  MS  0   0  1
+  [23] .note.GNU-stack   PROGBITS        00000000 00041a 000000 00      0   0  1
+  [24] .ARM.attributes   ARM_ATTRIBUTES  00000000 00041a 00003f 00      0   0  1
+  [25] .shstrtab         STRTAB          00000000 000b00 000143 00      0   0  1
+  [26] .symtab           SYMTAB          00000000 00045c 000320 10     27  35  4
+  [27] .strtab           STRTAB          00000000 00077c 00018b 00      0   0  1
+Key to Flags:
+  W (write), A (alloc), X (execute), M (merge), S (strings)
+  I (info), L (link order), G (group), T (TLS), E (exclude), x (unknown)
+  O (extra OS processing required) o (OS specific), p (processor specific)
+
+COMDAT group section [    1] `.group' [_ZN5Timer5startEv] contains 3 sections:
+   [Index]    Name
+   [   14]   .text._ZN5Timer5startEv
+   [   16]   .ARM.extab.text._ZN5Timer5startEv
+   [   17]   .ARM.exidx.text._ZN5Timer5startEv
+
+There are no program headers in this file.
+
+Relocation section '.rel.text' at offset 0x908 contains 44 entries:
+ Offset     Info    Type            Sym.Value  Sym. Name
+00000012  0000270a R_ARM_THM_CALL    00000000   _Z5adderii
+0000001a  00000c2f R_ARM_THM_MOVW_AB 00000000   .L.str
+0000001e  00000c30 R_ARM_THM_MOVT_AB 00000000   .L.str
+00000022  0000280a R_ARM_THM_CALL    00000000   trace_printf
+00000026  00000d2f R_ARM_THM_MOVW_AB 0000000c   .L.str.1
+0000002a  00000d30 R_ARM_THM_MOVT_AB 0000000c   .L.str.1
+0000002e  0000290a R_ARM_THM_CALL    00000000   trace_puts
+00000032  00002a2f R_ARM_THM_MOVW_AB 00000000   SystemCoreClock
+00000036  00002a30 R_ARM_THM_MOVT_AB 00000000   SystemCoreClock
+0000003c  00000e2f R_ARM_THM_MOVW_AB 0000001d   .L.str.2
+00000040  00000e30 R_ARM_THM_MOVT_AB 0000001d   .L.str.2
+00000044  0000280a R_ARM_THM_CALL    00000000   trace_printf
+0000004a  00002b0a R_ARM_THM_CALL    00000001   _ZN5Timer5startEv
+00000068  0000232f R_ARM_THM_MOVW_AB 00000000   blinkLeds
+0000006c  00002330 R_ARM_THM_MOVT_AB 00000000   blinkLeds
+00000074  00002c0a R_ARM_THM_CALL    00000000   _ZN8BlinkLed7powerUpEv
+000000a8  0000232f R_ARM_THM_MOVW_AB 00000000   blinkLeds
+000000ac  00002330 R_ARM_THM_MOVT_AB 00000000   blinkLeds
+000000b4  00002d0a R_ARM_THM_CALL    00000000   _ZN8BlinkLed6turnOnEv
+000000d0  00002e0a R_ARM_THM_CALL    00000000   _ZN5Timer5sleepEj
+000000f0  0000232f R_ARM_THM_MOVW_AB 00000000   blinkLeds
+000000f4  00002330 R_ARM_THM_MOVT_AB 00000000   blinkLeds
+000000fc  00002f0a R_ARM_THM_CALL    00000000   _ZN8BlinkLed7turnOffEv
+00000116  00002e0a R_ARM_THM_CALL    00000000   _ZN5Timer5sleepEj
+00000122  00000f2f R_ARM_THM_MOVW_AB 00000032   .L.str.3
+00000126  00000f30 R_ARM_THM_MOVT_AB 00000032   .L.str.3
+0000012a  0000280a R_ARM_THM_CALL    00000000   trace_printf
+0000014a  0000232f R_ARM_THM_MOVW_AB 00000000   blinkLeds
+0000014e  00002330 R_ARM_THM_MOVT_AB 00000000   blinkLeds
+00000156  00002d0a R_ARM_THM_CALL    00000000   _ZN8BlinkLed6turnOnEv
+00000162  00002e0a R_ARM_THM_CALL    00000000   _ZN5Timer5sleepEj
+0000016c  00002f0a R_ARM_THM_CALL    00000000   _ZN8BlinkLed7turnOffEv
+00000174  00002e0a R_ARM_THM_CALL    00000000   _ZN5Timer5sleepEj
+00000180  00000f2f R_ARM_THM_MOVW_AB 00000032   .L.str.3
+00000184  00000f30 R_ARM_THM_MOVT_AB 00000032   .L.str.3
+00000188  0000280a R_ARM_THM_CALL    00000000   trace_printf
+000001bc  0000232f R_ARM_THM_MOVW_AB 00000000   blinkLeds
+000001c0  00002330 R_ARM_THM_MOVT_AB 00000000   blinkLeds
+000001c8  0000300a R_ARM_THM_CALL    00000000   _ZN8BlinkLed6toggleEv
+000001d2  0000310a R_ARM_THM_CALL    00000000   _ZN8BlinkLed4isOnEv
+000001f8  00002e0a R_ARM_THM_CALL    00000000   _ZN5Timer5sleepEj
+00000204  00000f2f R_ARM_THM_MOVW_AB 00000032   .L.str.3
+00000208  00000f30 R_ARM_THM_MOVT_AB 00000032   .L.str.3
+0000020c  0000280a R_ARM_THM_CALL    00000000   trace_printf
+
+Relocation section '.rel.text.startup' at offset 0xa68 contains 6 entries:
+ Offset     Info    Type            Sym.Value  Sym. Name
+00000004  0000232f R_ARM_THM_MOVW_AB 00000000   blinkLeds
+0000000e  00002330 R_ARM_THM_MOVT_AB 00000000   blinkLeds
+00000014  0000240a R_ARM_THM_CALL    00000000   _ZN8BlinkLedC1Ejjb
+00000022  0000240a R_ARM_THM_CALL    00000000   _ZN8BlinkLedC1Ejjb
+00000030  0000240a R_ARM_THM_CALL    00000000   _ZN8BlinkLedC1Ejjb
+0000003e  0000240a R_ARM_THM_CALL    00000000   _ZN8BlinkLedC1Ejjb
+
+Relocation section '.rel.ARM.exidx.text.startup' at offset 0xa98 contains 3 entries:
+ Offset     Info    Type            Sym.Value  Sym. Name
+00000000  0000052a R_ARM_PREL31      00000000   .text.startup
+00000000  00002500 R_ARM_NONE        00000000   __aeabi_unwind_cpp_pr0
+00000008  0000052a R_ARM_PREL31      00000000   .text.startup
+
+Relocation section '.rel.ARM.exidx' at offset 0xab0 contains 4 entries:
+ Offset     Info    Type            Sym.Value  Sym. Name
+00000000  0000022a R_ARM_PREL31      00000000   .text
+00000000  00002500 R_ARM_NONE        00000000   __aeabi_unwind_cpp_pr0
+00000008  0000022a R_ARM_PREL31      00000000   .text
+00000010  0000022a R_ARM_PREL31      00000000   .text
+
+Relocation section '.rel.text._ZN5Timer5startEv' at offset 0xad0 contains 3 entries:
+ Offset     Info    Type            Sym.Value  Sym. Name
+00000008  00002a2f R_ARM_THM_MOVW_AB 00000000   SystemCoreClock
+0000000c  00002a30 R_ARM_THM_MOVT_AB 00000000   SystemCoreClock
+00000020  0000150a R_ARM_THM_CALL    00000213   _ZL14SysTick_Configj
+
+Relocation section '.rel.ARM.exidx.text._ZN5Timer5startEv' at offset 0xae8 contains 2 entries:
+ Offset     Info    Type            Sym.Value  Sym. Name
+00000000  0000132a R_ARM_PREL31      00000000   .text._ZN5Timer5startE
+00000000  00002500 R_ARM_NONE        00000000   __aeabi_unwind_cpp_pr0
+
+Relocation section '.rel.init_array' at offset 0xaf8 contains 1 entries:
+ Offset     Info    Type            Sym.Value  Sym. Name
+00000000  00001a26 R_ARM_TARGET1     00000045   _GLOBAL__sub_I_main.cp
+
+Unwind table index '.ARM.exidx.text.startup' at offset 0x350 contains 2 entries:
+
+0x0: 0x80b0b0b0
+  Compact model index: 0
+  0xb0      finish
+  0xb0      finish
+  0xb0      finish
+
+0x44 <_GLOBAL__sub_I_main.cpp>: 0x80b0b0b0
+  Compact model index: 0
+  0xb0      finish
+  0xb0      finish
+  0xb0      finish
+
+
+Unwind table index '.ARM.exidx' at offset 0x360 contains 3 entries:
+
+0x0 <main>: 0x80b0b0b0
+  Compact model index: 0
+  0xb0      finish
+  0xb0      finish
+  0xb0      finish
+
+0x212 <_ZL14SysTick_Configj>: 0x80b0b0b0
+  Compact model index: 0
+  0xb0      finish
+  0xb0      finish
+  0xb0      finish
+
+0x272 <_ZL16NVIC_SetPriority9IRQn_Typej>: 0x80b0b0b0
+  Compact model index: 0
+  0xb0      finish
+  0xb0      finish
+  0xb0      finish
+
+
+Unwind table index '.ARM.exidx.text._ZN5Timer5startEv' at offset 0x3a0 contains 1 entries:
+
+0x0 <_ZN5Timer5startEv>: 0x80b0b0b0
+  Compact model index: 0
+  0xb0      finish
+  0xb0      finish
+  0xb0      finish
+
+
+Symbol table '.symtab' contains 50 entries:
+   Num:    Value  Size Type    Bind   Vis      Ndx Name
+     0: 00000000     0 NOTYPE  LOCAL  DEFAULT  UND 
+     1: 00000000     0 FILE    LOCAL  DEFAULT  ABS main.cpp
+     2: 00000000     0 SECTION LOCAL  DEFAULT    2 
+     3: 00000000     0 SECTION LOCAL  DEFAULT    4 
+     4: 00000000     0 SECTION LOCAL  DEFAULT    5 
+     5: 00000000     0 SECTION LOCAL  DEFAULT    6 
+     6: 00000001    68 FUNC    LOCAL  DEFAULT    6 __cxx_global_var_init
+     7: 00000000     0 NOTYPE  LOCAL  DEFAULT    6 $t
+     8: 00000000     0 SECTION LOCAL  DEFAULT    8 
+     9: 00000000     0 SECTION LOCAL  DEFAULT    9 
+    10: 00000000     0 NOTYPE  LOCAL  DEFAULT    9 $d
+    11: 00000000     0 NOTYPE  LOCAL  DEFAULT    2 $t
+    12: 00000000    12 OBJECT  LOCAL  DEFAULT   19 .L.str
+    13: 0000000c    17 OBJECT  LOCAL  DEFAULT   19 .L.str.1
+    14: 0000001d    21 OBJECT  LOCAL  DEFAULT   19 .L.str.2
+    15: 00000032    11 OBJECT  LOCAL  DEFAULT   19 .L.str.3
+    16: 00000000     0 SECTION LOCAL  DEFAULT   11 
+    17: 00000000     0 SECTION LOCAL  DEFAULT   12 
+    18: 00000000     0 NOTYPE  LOCAL  DEFAULT   12 $d
+    19: 00000000     0 SECTION LOCAL  DEFAULT   14 
+    20: 00000000     0 NOTYPE  LOCAL  DEFAULT   14 $t
+    21: 00000213    96 FUNC    LOCAL  DEFAULT    2 _ZL14SysTick_Configj
+    22: 00000000     0 SECTION LOCAL  DEFAULT   16 
+    23: 00000000     0 SECTION LOCAL  DEFAULT   17 
+    24: 00000000     0 NOTYPE  LOCAL  DEFAULT   17 $d
+    25: 00000273    60 FUNC    LOCAL  DEFAULT    2 _ZL16NVIC_SetPriority9IRQ
+    26: 00000045    10 FUNC    LOCAL  DEFAULT    6 _GLOBAL__sub_I_main.cpp
+    27: 00000000     0 NOTYPE  LOCAL  DEFAULT    5 $d
+    28: 00000000     0 SECTION LOCAL  DEFAULT   19 
+    29: 00000000     0 SECTION LOCAL  DEFAULT   20 
+    30: 00000000     0 NOTYPE  LOCAL  DEFAULT   20 $d
+    31: 00000000     0 SECTION LOCAL  DEFAULT   23 
+    32: 00000000     0 SECTION LOCAL  DEFAULT   22 
+    33: 00000000     0 SECTION LOCAL  DEFAULT   24 
+    34: 00000000     0 SECTION LOCAL  DEFAULT    1 
+    35: 00000000    64 OBJECT  GLOBAL DEFAULT    5 blinkLeds
+    36: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _ZN8BlinkLedC1Ejjb
+    37: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND __aeabi_unwind_cpp_pr0
+    38: 00000001   530 FUNC    GLOBAL DEFAULT    2 main
+    39: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _Z5adderii
+    40: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND trace_printf
+    41: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND trace_puts
+    42: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND SystemCoreClock
+    43: 00000001    40 FUNC    WEAK   DEFAULT   14 _ZN5Timer5startEv
+    44: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _ZN8BlinkLed7powerUpEv
+    45: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _ZN8BlinkLed6turnOnEv
+    46: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _ZN5Timer5sleepEj
+    47: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _ZN8BlinkLed7turnOffEv
+    48: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _ZN8BlinkLed6toggleEv
+    49: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _ZN8BlinkLed4isOnEv
+
+No version information found in this file.
+Attribute Section: aeabi
+File Attributes
+  Tag_conformance: "2.09"
+  Tag_CPU_name: "Cortex-M4"
+  Tag_CPU_arch: v7E-M
+  Tag_CPU_arch_profile: Microcontroller
+  Tag_THUMB_ISA_use: Thumb-2
+  Tag_FP_arch: VFPv4-D16
+  Tag_ABI_PCS_GOT_use: direct
+  Tag_ABI_PCS_wchar_t: 4
+  Tag_ABI_FP_denormal: Needed
+  Tag_ABI_FP_exceptions: Needed
+  Tag_ABI_FP_number_model: IEEE 754
+  Tag_ABI_align_needed: 8-byte
+  Tag_ABI_align_preserved: 8-byte, except leaf SP
+  Tag_ABI_HardFP_use: SP only
+  Tag_CPU_unaligned_access: v6
+  Tag_FP_HP_extension: Allowed
+  Tag_ABI_FP_16bit_format: IEEE 754

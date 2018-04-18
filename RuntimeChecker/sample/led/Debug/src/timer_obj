@@ -1,0 +1,32 @@
+
+Timer.o:     file format elf32-littlearm
+
+
+Disassembly of section .text._ZN5Timer5sleepEm:
+
+00000000 <_ZN5Timer5sleepEm>:
+   0:	4b03      	ldr	r3, [pc, #12]	; (10 <_ZN5Timer5sleepEm+0x10>)
+   2:	6019      	str	r1, [r3, #0]
+   4:	4b02      	ldr	r3, [pc, #8]	; (10 <_ZN5Timer5sleepEm+0x10>)
+   6:	681b      	ldr	r3, [r3, #0]
+   8:	2b00      	cmp	r3, #0
+   a:	d1fb      	bne.n	4 <_ZN5Timer5sleepEm+0x4>
+   c:	4770      	bx	lr
+   e:	bf00      	nop
+  10:	00000000 	.word	0x00000000
+
+Disassembly of section .text.SysTick_Handler:
+
+00000000 <SysTick_Handler>:
+   0:	b508      	push	{r3, lr}
+   2:	f7ff fffe 	bl	0 <HAL_IncTick>
+   6:	4b04      	ldr	r3, [pc, #16]	; (18 <SysTick_Handler+0x18>)
+   8:	681b      	ldr	r3, [r3, #0]
+   a:	b11b      	cbz	r3, 14 <SysTick_Handler+0x14>
+   c:	4a02      	ldr	r2, [pc, #8]	; (18 <SysTick_Handler+0x18>)
+   e:	6813      	ldr	r3, [r2, #0]
+  10:	3b01      	subs	r3, #1
+  12:	6013      	str	r3, [r2, #0]
+  14:	bd08      	pop	{r3, pc}
+  16:	bf00      	nop
+  18:	00000000 	.word	0x00000000

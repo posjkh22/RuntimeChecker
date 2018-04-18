@@ -1,0 +1,88 @@
+In archive libSignal.a:
+
+SignalAPIs.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <sig_initializer>:
+   0:	b480      	push	{r7}
+   2:	af00      	add	r7, sp, #0
+   4:	4b05      	ldr	r3, [pc, #20]	; (1c <sig_initializer+0x1c>)
+   6:	681b      	ldr	r3, [r3, #0]
+   8:	2b01      	cmp	r3, #1
+   a:	d102      	bne.n	12 <sig_initializer+0x12>
+   c:	4b03      	ldr	r3, [pc, #12]	; (1c <sig_initializer+0x1c>)
+   e:	2200      	movs	r2, #0
+  10:	601a      	str	r2, [r3, #0]
+  12:	46bd      	mov	sp, r7
+  14:	f85d 7b04 	ldr.w	r7, [sp], #4
+  18:	4770      	bx	lr
+  1a:	bf00      	nop
+  1c:	00000000 	.word	0x00000000
+
+00000020 <sig_checker>:
+  20:	b480      	push	{r7}
+  22:	b083      	sub	sp, #12
+  24:	af00      	add	r7, sp, #0
+  26:	6078      	str	r0, [r7, #4]
+  28:	4b0b      	ldr	r3, [pc, #44]	; (58 <sig_checker+0x38>)
+  2a:	681b      	ldr	r3, [r3, #0]
+  2c:	3301      	adds	r3, #1
+  2e:	f44f 72c8 	mov.w	r2, #400	; 0x190
+  32:	4293      	cmp	r3, r2
+  34:	d20a      	bcs.n	4c <sig_checker+0x2c>
+  36:	4b08      	ldr	r3, [pc, #32]	; (58 <sig_checker+0x38>)
+  38:	681b      	ldr	r3, [r3, #0]
+  3a:	4908      	ldr	r1, [pc, #32]	; (5c <sig_checker+0x3c>)
+  3c:	687a      	ldr	r2, [r7, #4]
+  3e:	f841 2023 	str.w	r2, [r1, r3, lsl #2]
+  42:	4b05      	ldr	r3, [pc, #20]	; (58 <sig_checker+0x38>)
+  44:	681b      	ldr	r3, [r3, #0]
+  46:	3301      	adds	r3, #1
+  48:	4a03      	ldr	r2, [pc, #12]	; (58 <sig_checker+0x38>)
+  4a:	6013      	str	r3, [r2, #0]
+  4c:	370c      	adds	r7, #12
+  4e:	46bd      	mov	sp, r7
+  50:	f85d 7b04 	ldr.w	r7, [sp], #4
+  54:	4770      	bx	lr
+  56:	bf00      	nop
+	...
+
+00000060 <sig_debug>:
+  60:	b580      	push	{r7, lr}
+  62:	b082      	sub	sp, #8
+  64:	af00      	add	r7, sp, #0
+  66:	4b10      	ldr	r3, [pc, #64]	; (a8 <sig_debug+0x48>)
+  68:	681b      	ldr	r3, [r3, #0]
+  6a:	2b00      	cmp	r3, #0
+  6c:	d103      	bne.n	76 <sig_debug+0x16>
+  6e:	480f      	ldr	r0, [pc, #60]	; (ac <sig_debug+0x4c>)
+  70:	f7ff fffe 	bl	0 <puts>
+  74:	e015      	b.n	a2 <sig_debug+0x42>
+  76:	2300      	movs	r3, #0
+  78:	607b      	str	r3, [r7, #4]
+  7a:	e00a      	b.n	92 <sig_debug+0x32>
+  7c:	4a0c      	ldr	r2, [pc, #48]	; (b0 <sig_debug+0x50>)
+  7e:	687b      	ldr	r3, [r7, #4]
+  80:	f852 3023 	ldr.w	r3, [r2, r3, lsl #2]
+  84:	480b      	ldr	r0, [pc, #44]	; (b4 <sig_debug+0x54>)
+  86:	4619      	mov	r1, r3
+  88:	f7ff fffe 	bl	0 <printf>
+  8c:	687b      	ldr	r3, [r7, #4]
+  8e:	3301      	adds	r3, #1
+  90:	607b      	str	r3, [r7, #4]
+  92:	687a      	ldr	r2, [r7, #4]
+  94:	4b04      	ldr	r3, [pc, #16]	; (a8 <sig_debug+0x48>)
+  96:	681b      	ldr	r3, [r3, #0]
+  98:	429a      	cmp	r2, r3
+  9a:	d3ef      	bcc.n	7c <sig_debug+0x1c>
+  9c:	200a      	movs	r0, #10
+  9e:	f7ff fffe 	bl	0 <putchar>
+  a2:	3708      	adds	r7, #8
+  a4:	46bd      	mov	sp, r7
+  a6:	bd80      	pop	{r7, pc}
+  a8:	00000000 	.word	0x00000000
+  ac:	00000004 	.word	0x00000004
+  b0:	00000000 	.word	0x00000000
+  b4:	00000020 	.word	0x00000020
