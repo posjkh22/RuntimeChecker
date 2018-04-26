@@ -7,10 +7,10 @@ INCLUDE		= $(PWD)/include
 
 MONITOR		= $(PWD)/monitor
 SIGNAL 	 	= $(PWD)/signal
-SAMPLE 	 	= $(PWD)/sample
+SAMPLE 	 	= $(PWD)/sample 
 
 run:
-	$(PWD)/$(OUTPUT) $(SAMPLE)/testcase1.bc
+	$(PWD)/$(OUTPUT) ./sample/simple/testcase1.bc
 	llvm-dis SignalCodeImplanted.bc -o $(SIGNAL)/SignalCodeImplanted.ll
 	mv SignalCodeImplanted.bc $(SIGNAL)
 

@@ -69,18 +69,24 @@ main:
 	push	{r4, r5, r7, lr}
 	add	r7, sp, #8
 	sub	sp, #72
-	movs	r4, #0
-	str	r4, [sp, #68]
+	movs	r5, #0
+	str	r5, [sp, #68]
 	str	r0, [sp, #64]
 	str	r1, [sp, #56]
-	movs	r0, #7
+	movs	r0, #3
 	movs	r1, #5
 	bl	_Z5adderii
+	str	r0, [sp, #48]
+	ldr	r1, [sp, #48]
+	add.w	r0, r1, r1, lsr #31
+	asrs	r0, r0, #1
 	str	r0, [sp, #52]
-	bl	_Z11sig_checkerv
+	movw	r4, :lower16:.L.str
+	movt	r4, :upper16:.L.str
+	mov	r0, r4
+	bl	trace_printf
 	ldr	r1, [sp, #52]
-	movw	r0, :lower16:.L.str
-	movt	r0, :upper16:.L.str
+	mov	r0, r4
 	bl	trace_printf
 	movw	r0, :lower16:.L.str.1
 	movt	r0, :upper16:.L.str.1
@@ -91,205 +97,145 @@ main:
 	movw	r0, :lower16:.L.str.2
 	movt	r0, :upper16:.L.str.2
 	bl	trace_printf
-	add	r0, sp, #48
+	add	r0, sp, #44
 	bl	_ZN5Timer5startEv
-	str	r4, [sp, #44]
-	str	r4, [sp, #40]
+	str	r5, [sp, #36]
+	str	r5, [sp, #32]
 	b	.LBB1_1
 .LBB1_1:                                @ =>This Inner Loop Header: Depth=1
-	ldr	r0, [sp, #40]
-	ldr	r1, [sp, #44]
+	ldr	r0, [sp, #32]
+	ldr	r1, [sp, #36]
 	rsbs.w	r0, r0, #3
 	mov.w	r0, #0
 	sbcs	r0, r1
 	blo	.LBB1_4
 	b	.LBB1_2
 .LBB1_2:                                @   in Loop: Header=BB1_1 Depth=1
-	ldr	r0, [sp, #40]
+	ldr	r0, [sp, #32]
 	movw	r1, :lower16:blinkLeds
 	movt	r1, :upper16:blinkLeds
 	add.w	r0, r1, r0, lsl #4
 	bl	_ZN8BlinkLed7powerUpEv
 	b	.LBB1_3
 .LBB1_3:                                @   in Loop: Header=BB1_1 Depth=1
-	ldr	r0, [sp, #40]
-	ldr	r1, [sp, #44]
+	ldr	r0, [sp, #32]
+	ldr	r1, [sp, #36]
 	adds	r0, #1
 	adc	r1, r1, #0
-	str	r0, [sp, #40]
-	str	r1, [sp, #44]
+	str	r0, [sp, #32]
+	str	r1, [sp, #36]
 	b	.LBB1_1
 .LBB1_4:
 	movs	r0, #0
-	str	r0, [sp, #36]
 	str	r0, [sp, #28]
-	str	r0, [sp, #24]
+	str	r0, [sp, #20]
+	str	r0, [sp, #16]
 	b	.LBB1_5
 .LBB1_5:                                @ =>This Inner Loop Header: Depth=1
-	ldr	r0, [sp, #24]
-	ldr	r1, [sp, #28]
+	ldr	r0, [sp, #16]
+	ldr	r1, [sp, #20]
 	rsbs.w	r0, r0, #3
 	mov.w	r0, #0
 	sbcs	r0, r1
 	blo	.LBB1_8
 	b	.LBB1_6
 .LBB1_6:                                @   in Loop: Header=BB1_5 Depth=1
-	ldr	r0, [sp, #24]
+	ldr	r0, [sp, #16]
 	movw	r1, :lower16:blinkLeds
 	movt	r1, :upper16:blinkLeds
 	add.w	r0, r1, r0, lsl #4
 	bl	_ZN8BlinkLed6turnOnEv
 	b	.LBB1_7
 .LBB1_7:                                @   in Loop: Header=BB1_5 Depth=1
-	ldr	r0, [sp, #24]
-	ldr	r1, [sp, #28]
-	adds	r0, #1
-	adc	r1, r1, #0
-	str	r0, [sp, #24]
-	str	r1, [sp, #28]
-	b	.LBB1_5
-.LBB1_8:
-	add	r0, sp, #48
-	mov.w	r1, #1000
-	bl	_ZN5Timer5sleepEm
-	movs	r0, #0
-	str	r0, [sp, #20]
-	str	r0, [sp, #16]
-	b	.LBB1_9
-.LBB1_9:                                @ =>This Inner Loop Header: Depth=1
-	ldr	r0, [sp, #16]
-	ldr	r1, [sp, #20]
-	rsbs.w	r0, r0, #3
-	mov.w	r0, #0
-	sbcs	r0, r1
-	blo	.LBB1_12
-	b	.LBB1_10
-.LBB1_10:                               @   in Loop: Header=BB1_9 Depth=1
-	ldr	r0, [sp, #16]
-	movw	r1, :lower16:blinkLeds
-	movt	r1, :upper16:blinkLeds
-	add.w	r0, r1, r0, lsl #4
-	bl	_ZN8BlinkLed7turnOffEv
-	b	.LBB1_11
-.LBB1_11:                               @   in Loop: Header=BB1_9 Depth=1
 	ldr	r0, [sp, #16]
 	ldr	r1, [sp, #20]
 	adds	r0, #1
 	adc	r1, r1, #0
 	str	r0, [sp, #16]
 	str	r1, [sp, #20]
-	b	.LBB1_9
-.LBB1_12:
-	add	r0, sp, #48
-	movs	r1, #250
+	b	.LBB1_5
+.LBB1_8:
+	add	r0, sp, #44
+	mov.w	r1, #1000
 	bl	_ZN5Timer5sleepEm
-	ldr	r0, [sp, #36]
-	adds	r0, #1
-	str	r0, [sp, #36]
-	ldr	r1, [sp, #36]
-	movw	r0, :lower16:.L.str.3
-	movt	r0, :upper16:.L.str.3
-	bl	trace_printf
 	movs	r0, #0
 	str	r0, [sp, #12]
 	str	r0, [sp, #8]
-	b	.LBB1_13
-.LBB1_13:                               @ =>This Inner Loop Header: Depth=1
+	b	.LBB1_9
+.LBB1_9:                                @ =>This Inner Loop Header: Depth=1
 	ldr	r0, [sp, #8]
 	ldr	r1, [sp, #12]
 	rsbs.w	r0, r0, #3
 	mov.w	r0, #0
 	sbcs	r0, r1
-	blo	.LBB1_16
-	b	.LBB1_14
-.LBB1_14:                               @   in Loop: Header=BB1_13 Depth=1
+	blo	.LBB1_12
+	b	.LBB1_10
+.LBB1_10:                               @   in Loop: Header=BB1_9 Depth=1
 	ldr	r0, [sp, #8]
-	movw	r5, :lower16:blinkLeds
-	movt	r5, :upper16:blinkLeds
-	add.w	r0, r5, r0, lsl #4
-	bl	_ZN8BlinkLed6turnOnEv
-	add	r4, sp, #48
-	mov	r0, r4
-	movw	r1, #750
-	bl	_ZN5Timer5sleepEm
-	ldr	r0, [sp, #8]
-	add.w	r0, r5, r0, lsl #4
+	movw	r1, :lower16:blinkLeds
+	movt	r1, :upper16:blinkLeds
+	add.w	r0, r1, r0, lsl #4
 	bl	_ZN8BlinkLed7turnOffEv
-	mov	r0, r4
-	movs	r1, #250
-	bl	_ZN5Timer5sleepEm
-	ldr	r0, [sp, #36]
-	adds	r0, #1
-	str	r0, [sp, #36]
-	ldr	r1, [sp, #36]
-	movw	r0, :lower16:.L.str.3
-	movt	r0, :upper16:.L.str.3
-	bl	trace_printf
-	b	.LBB1_15
-.LBB1_15:                               @   in Loop: Header=BB1_13 Depth=1
+	b	.LBB1_11
+.LBB1_11:                               @   in Loop: Header=BB1_9 Depth=1
 	ldr	r0, [sp, #8]
 	ldr	r1, [sp, #12]
 	adds	r0, #1
 	adc	r1, r1, #0
 	str	r0, [sp, #8]
 	str	r1, [sp, #12]
-	b	.LBB1_13
-.LBB1_16:
-	b	.LBB1_17
-.LBB1_17:                               @ =>This Loop Header: Depth=1
-                                        @     Child Loop BB1_18 Depth 2
+	b	.LBB1_9
+.LBB1_12:
+	add	r0, sp, #44
+	movs	r1, #250
+	bl	_ZN5Timer5sleepEm
+	movw	r0, :lower16:.L.str.3
+	movt	r0, :upper16:.L.str.3
+	bl	trace_printf
 	movs	r0, #0
 	str	r0, [sp, #4]
 	str	r0, [sp]
-	b	.LBB1_18
-.LBB1_18:                               @   Parent Loop BB1_17 Depth=1
-                                        @ =>  This Inner Loop Header: Depth=2
+	b	.LBB1_13
+.LBB1_13:                               @ =>This Inner Loop Header: Depth=1
 	ldr	r0, [sp]
 	ldr	r1, [sp, #4]
-	rsbs.w	r0, r0, #3
-	mov.w	r0, #0
-	sbcs	r0, r1
-	blo	.LBB1_23
-	b	.LBB1_19
-.LBB1_19:                               @   in Loop: Header=BB1_18 Depth=2
-	ldr	r0, [sp]
+	ldr	r2, [sp, #52]
+	subs	r0, r0, r2
+	sbcs.w	r0, r1, r2, asr #31
+	bhs	.LBB1_16
+	b	.LBB1_14
+.LBB1_14:                               @   in Loop: Header=BB1_13 Depth=1
 	movw	r4, :lower16:blinkLeds
 	movt	r4, :upper16:blinkLeds
-	add.w	r0, r4, r0, lsl #4
-	bl	_ZN8BlinkLed6toggleEv
-	ldr	r0, [sp]
-	add.w	r0, r4, r0, lsl #4
-	bl	_ZN8BlinkLed4isOnEv
-	cmp	r0, #1
-	bne	.LBB1_21
-	b	.LBB1_20
-.LBB1_20:                               @   in Loop: Header=BB1_17 Depth=1
-	b	.LBB1_24
-.LBB1_21:                               @   in Loop: Header=BB1_18 Depth=2
-	b	.LBB1_22
-.LBB1_22:                               @   in Loop: Header=BB1_18 Depth=2
+	mov	r0, r4
+	bl	_ZN8BlinkLed6turnOnEv
+	add	r5, sp, #44
+	mov	r0, r5
+	movw	r1, #750
+	bl	_ZN5Timer5sleepEm
+	mov	r0, r4
+	bl	_ZN8BlinkLed7turnOffEv
+	mov	r0, r5
+	movs	r1, #250
+	bl	_ZN5Timer5sleepEm
+	ldr	r2, [sp]
+	ldr	r3, [sp, #4]
+	movw	r0, :lower16:.L.str.4
+	movt	r0, :upper16:.L.str.4
+	bl	trace_printf
+	b	.LBB1_15
+.LBB1_15:                               @   in Loop: Header=BB1_13 Depth=1
 	ldr	r0, [sp]
 	ldr	r1, [sp, #4]
 	adds	r0, #1
 	adc	r1, r1, #0
 	str	r0, [sp]
 	str	r1, [sp, #4]
-	b	.LBB1_18
-.LBB1_23:                               @ %.loopexit
-                                        @   in Loop: Header=BB1_17 Depth=1
-	b	.LBB1_24
-.LBB1_24:                               @   in Loop: Header=BB1_17 Depth=1
-	add	r0, sp, #48
-	mov.w	r1, #1000
-	bl	_ZN5Timer5sleepEm
-	ldr	r0, [sp, #36]
-	adds	r0, #1
-	str	r0, [sp, #36]
-	ldr	r1, [sp, #36]
-	movw	r0, :lower16:.L.str.3
-	movt	r0, :upper16:.L.str.3
-	bl	trace_printf
-	b	.LBB1_17
+	b	.LBB1_13
+.LBB1_16:
+	ldr	r0, [sp, #68]
+	add	sp, #72
+	pop	{r4, r5, r7, pc}
 .Lfunc_end1:
 	.size	main, .Lfunc_end1-main
 	.fnend
@@ -437,8 +383,8 @@ blinkLeds:
 	.type	.L.str,%object          @ @.str
 	.section	.rodata.str1.1,"aMS",%progbits,1
 .L.str:
-	.asciz	"result: %d\n"
-	.size	.L.str, 12
+	.asciz	"version: %d\n"
+	.size	.L.str, 13
 
 	.type	.L.str.1,%object        @ @.str.1
 .L.str.1:
@@ -452,8 +398,13 @@ blinkLeds:
 
 	.type	.L.str.3,%object        @ @.str.3
 .L.str.3:
-	.asciz	"Second %u\n"
-	.size	.L.str.3, 11
+	.asciz	"Ready!\n"
+	.size	.L.str.3, 8
+
+	.type	.L.str.4,%object        @ @.str.4
+.L.str.4:
+	.asciz	"number %u\n"
+	.size	.L.str.4, 11
 
 	.section	.init_array,"aw",%init_array
 	.p2align	2

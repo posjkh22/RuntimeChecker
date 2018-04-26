@@ -636,7 +636,10 @@ bool Analyzer::AnalysisForSignalCodeImplanter()
 
 			wBasicBlock* currentWBB = *iter2;
 			llvm::BasicBlock* currentBB = currentWBB->getBasicBlock();
-			p_CompactImplantedBBList->push_back(currentBB);
+
+			p_CompactImplantedBBList->insert(std::make_pair(currentBB, currentWBB->getID()));
+	
+			//p_CompactImplantedBBList->push_back(currentBB);
 		}
 	}
 	

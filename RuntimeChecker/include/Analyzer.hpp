@@ -2,6 +2,7 @@
 #ifndef WRAPPER
 #define WRAPPER
 
+#include <map>
 #include <vector>
 #include <list>
 #include <llvm/IR/Function.h>
@@ -24,7 +25,8 @@ class Analyzer;
 class MetaDataSet;
 
 
-typedef std::vector<BasicBlock* > CompactImplantedBBList;
+typedef std::map<BasicBlock* , unsigned int> CompactImplantedBBList;
+//typedef std::vector<BasicBlock* > CompactImplantedBBList;
 
 
 class CompactBBInfo

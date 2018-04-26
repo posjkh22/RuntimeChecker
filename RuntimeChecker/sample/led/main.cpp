@@ -152,36 +152,26 @@ BlinkLed blinkLeds[1] =
 
 
 int adder(int, int);
-void sig_checker();
-
-/*
-void sig_checker()
-{
-	trace_puts("hello!\n");
-	return;
-}
-*/
 
 int
 main(int argc, char* argv[])
 {
 
-  int result;
-  result = adder(7, 5);
+  int number;
 
-  sig_checker();
+  int version = adder(3, 5);
 
-  trace_printf("result: %d\n", result);
+  number = version/2;
+  trace_printf("version: %d\n", version);
+  trace_printf("version: %d\n", number);
 
-  // Send a greeting to the trace device (skipped on Release).
   trace_puts("Hello ARM World!");
-
-  // At this stage the system clock should have already been configured
-  // at high speed.
   trace_printf("System clock: %u Hz\n", SystemCoreClock);
 
   Timer timer;
   timer.start ();
+
+
 
   // Perform all necessary initialisations for the LEDs.
   for (size_t i = 0; i < (sizeof(blinkLeds) / sizeof(blinkLeds[0])); ++i)
@@ -205,60 +195,22 @@ main(int argc, char* argv[])
     }
 
   timer.sleep (BLINK_OFF_TICKS);
+  trace_printf ("Ready!\n");
 
-  ++seconds;
-  trace_printf ("Second %u\n", seconds);
+  for (size_t i = 0; i < number; ++i)
+  {
+      blinkLeds[0].turnOn ();
+      timer.sleep (BLINK_ON_TICKS);
 
-  if ((sizeof(blinkLeds) / sizeof(blinkLeds[0])) > 1)
-    {
-      // Blink individual LEDs.
-      for (size_t i = 0; i < (sizeof(blinkLeds) / sizeof(blinkLeds[0])); ++i)
-        {
-          blinkLeds[i].turnOn ();
-          timer.sleep (BLINK_ON_TICKS);
+      blinkLeds[0].turnOff ();
+      timer.sleep (BLINK_OFF_TICKS);
 
-          blinkLeds[i].turnOff ();
-          timer.sleep (BLINK_OFF_TICKS);
+      trace_printf ("number %u\n", i);
+  }
 
-          ++seconds;
-          trace_printf ("Second %u\n", seconds);
-        }
 
-      // Blink binary.
-      while (1)
-        {
-          for (size_t l = 0; l < (sizeof(blinkLeds) / sizeof(blinkLeds[0]));
-              ++l)
-            {
-              blinkLeds[l].toggle ();
-              if (blinkLeds[l].isOn ())
-                {
-                  break;
-                }
-            }
-          timer.sleep (Timer::FREQUENCY_HZ);
-
-          ++seconds;
-          trace_printf ("Second %u\n", seconds);
-        }
-      // Infinite loop, never return.
-    }
-  else
-    {
-      while (1)
-        {
-          blinkLeds[0].turnOn ();
-          timer.sleep (BLINK_ON_TICKS);
-
-          blinkLeds[0].turnOff ();
-          timer.sleep (BLINK_OFF_TICKS);
-
-          ++seconds;
-          trace_printf ("Second %u\n", seconds);
-        }
-      // Infinite loop, never return.
-    }
 }
+
 
 #pragma GCC diagnostic pop
 

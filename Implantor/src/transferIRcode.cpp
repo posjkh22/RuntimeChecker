@@ -17,6 +17,11 @@ bool transferIRcode::InsertCallInstruction(std::unique_ptr<Module> &m, LLVMConte
 	{
 	inst->setParent(bb);
 	llvm::Instruction *newInst = inst->clone();
+	
+	llvm::Type *i32_type = llvm::IntegerType::getInt32Ty(context);
+	Value *constant_two = llvm::ConstantInt::get(i32_type, 2, true);
+	
+	newInst->setOperand(0, constant_two);
 	bb->getInstList().push_front(newInst);
 	}
 	return true;
@@ -27,32 +32,12 @@ bool transferIRcode::InsertFunction(std::unique_ptr<Module> &m, LLVMContext &con
 
 	/* Function-1 */
 
-	/*
+	FunctionType *void_return_one_integer = llvm::FunctionType::get(builder.getVoidTy(), IntegerType::get(context, 32), false);
+	
+	
 	Constant *c = m->getOrInsertFunction("checker0", \
-											IntegerType::get(context, 32), \
-											IntegerType::get(context, 32), \
-											IntegerType::get(context, 32), \
-											IntegerType::get(context, 32));
- 	Function* checker0 = cast<Function>(c);
-	checker0->setCallingConv(CallingConv::C);
-
-	Function::arg_iterator args = checker0->arg_begin();
-	Value* x = args++;
-	x->setName("x");
-	Value* y = args++;
-	y->setName("y");
-	Value* z = args++;
-	z->setName("z");
-
-	llvm::BasicBlock* block = BasicBlock::Create(context, "entry", checker0);
-	IRBuilder<> builder2(block);
-
-	Value* tmp = builder2.CreateBinOp(llvm::Instruction::Mul, x, y, "tmp");
-	Value* tmp2 = builder2.CreateBinOp(llvm::Instruction::Add, tmp, z, "temp2");
-
-	builder2.CreateRet(tmp2);
- 	
-	*/
+											void_return_one_integer);
+	Function* checker0 = cast<Function>(c);
 	
 
 
@@ -62,85 +47,23 @@ bool transferIRcode::InsertFunction(std::unique_ptr<Module> &m, LLVMContext &con
 	
 	/* General Puts Function */
 
-	/*
-	std::vector<llvm::Type *> putsArgs;
-	putsArgs.push_back(builder.getInt8Ty()->getPointerTo());
-	llvm::ArrayRef<llvm::Type*>  argsRef(putsArgs);
-	
-	llvm::FunctionType *putsType = 
-		llvm::FunctionType::get(builder.getInt32Ty(), argsRef, false);
- 	
-	llvm::Constant *putsFunc = m->getOrInsertFunction("puts", putsType);
- 	*/
 	
 	/* checker1 */
 	
-	Constant *checker1_ptr = m->getOrInsertFunction("sig_initializer", funcType); 
+	Constant *checker1_ptr = m->getOrInsertFunction("sig_initializer", void_return_one_integer); 
+	//Constant *checker1_ptr = m->getOrInsertFunction("sig_initializer", funcType); 
 	Function *checker1 = cast<Function>(checker1_ptr);
-
-	/*
-	llvm::BasicBlock *checker1_entry = BasicBlock::Create(context, "entry", checker1);
-	IRBuilder<> checker_builder1(checker1_entry);
-	Value *checker_message1 
-		= checker_builder1.CreateGlobalStringPtr("Checker1 run!\n");
-	checker_builder1.CreateCall(putsFunc, checker_message1);
-	checker_builder1.CreateRetVoid();
-	*/
 
 	/* checker2 */
 	
-	Constant *checker2_ptr = m->getOrInsertFunction("sig_checker", funcType); 
+	Constant *checker2_ptr = m->getOrInsertFunction("sig_checker", void_return_one_integer); 
+	//Constant *checker2_ptr = m->getOrInsertFunction("sig_checker", funcType); 
 	Function *checker2 = cast<Function>(checker2_ptr);
-
-	/*
-	llvm::BasicBlock *checker2_entry = BasicBlock::Create(context, "entry", checker2);
-	IRBuilder<> checker_builder2(checker2_entry);
-	Value *checker_message2 
-		= checker_builder2.CreateGlobalStringPtr("Checker2 run!\n");
-	checker_builder2.CreateCall(putsFunc, checker_message2);
-	checker_builder2.CreateRetVoid();
-	*/
-
-	/* checker3 */
-	/*
-	Constant *checker3_ptr = m->getOrInsertFunction("checker3", funcType); 
-	Function *checker3 = cast<Function>(checker3_ptr);
-	llvm::BasicBlock *checker3_entry = BasicBlock::Create(context, "entry", checker3);
-	IRBuilder<> checker_builder3(checker3_entry);
-	Value *checker_message3 
-		= checker_builder3.CreateGlobalStringPtr("Checker3 run!\n");
-	checker_builder3.CreateCall(putsFunc, checker_message3);
-	checker_builder3.CreateRetVoid();
-	*/
-
-	/* checker4 */
-	/*
-	Constant *checker4_ptr = m->getOrInsertFunction("checker4", funcType); 
-	Function *checker4 = cast<Function>(checker4_ptr);
-	llvm::BasicBlock *checker4_entry = BasicBlock::Create(context, "entry", checker4);
-	IRBuilder<> checker_builder4(checker4_entry);
-	Value *checker_message4 
-		= checker_builder4.CreateGlobalStringPtr("Checker4 run!\n");
-	checker_builder4.CreateCall(putsFunc, checker_message4);
-	checker_builder4.CreateRetVoid();
-	*/
-
-	/* checker5 */
-	/*
-	Constant *checker5_ptr = m->getOrInsertFunction("checker5", funcType); 
-	Function *checker5 = cast<Function>(checker5_ptr);
-	llvm::BasicBlock *checker5_entry = BasicBlock::Create(context, "entry", checker5);
-	IRBuilder<> checker_builder5(checker5_entry);
-	Value *checker_message5 
-		= checker_builder5.CreateGlobalStringPtr("Checker5 run!\n");
-	checker_builder5.CreateCall(putsFunc, checker_message5);
-	checker_builder5.CreateRetVoid();
-	*/
-
 
 
 
 	/* Call checker Set */
+
 	
 	Constant *gcdptr = m->getOrInsertFunction("CallcheckerSet", funcType); 
 	Function *gcd = cast<Function>(gcdptr);
@@ -148,14 +71,22 @@ bool transferIRcode::InsertFunction(std::unique_ptr<Module> &m, LLVMContext &con
 	IRBuilder<> CallChecker_builder(entry);
 	
 
-	Value *call_checker1 = CallChecker_builder.CreateCall(checker1);
-	Value *call_checker2 = CallChecker_builder.CreateCall(checker2);
+	/* Operand */
+	Value *constant_one1 = llvm::ConstantVector::get(CallChecker_builder.getInt32(1));
+	Value *constant_one2 = llvm::ConstantFP::get(CallChecker_builder.getDoubleTy(), 1);
 
-	/*
-	Value *call_checker3 = CallChecker_builder.CreateCall(checker3);
-	Value *call_checker4 = CallChecker_builder.CreateCall(checker4);
-	Value *call_checker5 = CallChecker_builder.CreateCall(checker5);
-	*/
+	llvm::Type *i32_type = llvm::IntegerType::getInt32Ty(context);
+	Value *constant_one3 = llvm::ConstantInt::get(i32_type, 1, true);
+	
+	//Value *constant_one4 = llvm::ConstantInt::get(CallChecker_builder.getInt32(1));
+	//Value *constant_one3 = llvm::IntegerType::get(context, 1);
+
+	Value *call_checker1 = CallChecker_builder.CreateCall(checker1, constant_one3);
+	Value *call_checker2 = CallChecker_builder.CreateCall(checker2, constant_one3);
+
+	//Value *call_checker1 = CallChecker_builder.CreateCall(checker1);
+	//Value *call_checker2 = CallChecker_builder.CreateCall(checker2);
+	Value *call_checker3 = CallChecker_builder.CreateCall(checker0, constant_one3);
 	
 	CallChecker_builder.CreateRetVoid();
 	

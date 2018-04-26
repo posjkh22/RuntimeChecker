@@ -21,7 +21,8 @@
 using namespace llvm;
 
 typedef std::unique_ptr<Module> ParsedIRmodule;
-typedef std::vector<BasicBlock* > CompactImplantedBBList;
+typedef std::map<BasicBlock* ,unsigned int > CompactImplantedBBList;
+//typedef std::vector<BasicBlock* > CompactImplantedBBList;
 
 class SignalCodeImplanter
 {
@@ -58,12 +59,14 @@ private:
 
 private:
 	bool DeclareSignalCodes(ParsedIRmodule &, LLVMContext &, IRBuilder<> &);
-	bool ImplantSignalCodes(ParsedIRmodule &, LLVMContext &, IRBuilder<> &, BasicBlock *, Instruction *);
+	bool ImplantSignalCodes(ParsedIRmodule &, LLVMContext &, IRBuilder<> &, 
+			BasicBlock *, unsigned int, Instruction *);
 	bool GenerateImplantedIRmodule();
 
 private:
 	llvm::BasicBlock *SearchTargetBasicBlock(ParsedIRmodule &m, std::string fname);
-	llvm::Instruction *SearchTargetInstructionCloned(ParsedIRmodule &m);
+	llvm::Instruction *getTargetInstClonedforInitializer(ParsedIRmodule &);
+	llvm::Instruction *getTargetInstClonedforChecker(ParsedIRmodule &);
 
 public:
 //	llvm::Instruction *GetTargetBasicBlockCloned(ParsedIRmodule &m);

@@ -37,3 +37,6 @@ obj:
 
 clean:
 	rm -f *.elf obj OBJ
+
+elf2hex:
+	arm-none-eabi-objcopy -O ihex RuntimeChecker.elf RuntimeChecker.hex

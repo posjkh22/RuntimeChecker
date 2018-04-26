@@ -8,7 +8,7 @@ target triple = "x86_64-unknown-linux-gnu"
 
 ; Function Attrs: noinline nounwind optnone uwtable
 define void @func1() #0 {
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   %1 = alloca i32, align 4
   store i32 1, i32* %1, align 4
   %2 = load i32, i32* @SpecificMem, align 4
@@ -16,13 +16,13 @@ define void @func1() #0 {
   br i1 %3, label %4, label %16
 
 ; <label>:4:                                      ; preds = %0
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   %5 = load i32, i32* %1, align 4
   %6 = icmp eq i32 %5, 1
   br i1 %6, label %7, label %11
 
 ; <label>:7:                                      ; preds = %4
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   %8 = load i32, i32* @SpecificMem, align 4
   %9 = load i32, i32* @Sum, align 4
   %10 = add nsw i32 %9, %8
@@ -30,7 +30,7 @@ define void @func1() #0 {
   br label %15
 
 ; <label>:11:                                     ; preds = %4
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   %12 = load i32, i32* @SpecificMem, align 4
   %13 = load i32, i32* @Sum, align 4
   %14 = sub nsw i32 %13, %12
@@ -38,17 +38,17 @@ define void @func1() #0 {
   br label %15
 
 ; <label>:15:                                     ; preds = %11, %7
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   br label %16
 
 ; <label>:16:                                     ; preds = %15, %0
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   ret void
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
 define void @func2() #0 {
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   %1 = alloca i32, align 4
   store i32 1, i32* %1, align 4
   %2 = load i32, i32* @SpecificMem, align 4
@@ -56,13 +56,13 @@ define void @func2() #0 {
   br i1 %3, label %4, label %16
 
 ; <label>:4:                                      ; preds = %0
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   %5 = load i32, i32* %1, align 4
   %6 = icmp eq i32 %5, 1
   br i1 %6, label %7, label %11
 
 ; <label>:7:                                      ; preds = %4
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   %8 = load i32, i32* @SpecificMem, align 4
   %9 = load i32, i32* @Sum, align 4
   %10 = add nsw i32 %9, %8
@@ -70,7 +70,7 @@ define void @func2() #0 {
   br label %15
 
 ; <label>:11:                                     ; preds = %4
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   %12 = load i32, i32* @SpecificMem, align 4
   %13 = load i32, i32* @Sum, align 4
   %14 = sub nsw i32 %13, %12
@@ -78,17 +78,17 @@ define void @func2() #0 {
   br label %15
 
 ; <label>:15:                                     ; preds = %11, %7
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   br label %16
 
 ; <label>:16:                                     ; preds = %15, %0
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   ret void
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
 define void @func3() #0 {
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   %1 = alloca i32, align 4
   store i32 1, i32* %1, align 4
   %2 = load i32, i32* @SpecificMem, align 4
@@ -96,13 +96,13 @@ define void @func3() #0 {
   br i1 %3, label %4, label %16
 
 ; <label>:4:                                      ; preds = %0
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   %5 = load i32, i32* %1, align 4
   %6 = icmp eq i32 %5, 1
   br i1 %6, label %7, label %11
 
 ; <label>:7:                                      ; preds = %4
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   %8 = load i32, i32* @SpecificMem, align 4
   %9 = load i32, i32* @Sum, align 4
   %10 = add nsw i32 %9, %8
@@ -110,7 +110,7 @@ define void @func3() #0 {
   br label %15
 
 ; <label>:11:                                     ; preds = %4
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   %12 = load i32, i32* @SpecificMem, align 4
   %13 = load i32, i32* @Sum, align 4
   %14 = sub nsw i32 %13, %12
@@ -118,17 +118,17 @@ define void @func3() #0 {
   br label %15
 
 ; <label>:15:                                     ; preds = %11, %7
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   br label %16
 
 ; <label>:16:                                     ; preds = %15, %0
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   ret void
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
 define void @func4() #0 {
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   %1 = alloca i32, align 4
   store i32 1, i32* %1, align 4
   %2 = load i32, i32* @SpecificMem, align 4
@@ -136,13 +136,13 @@ define void @func4() #0 {
   br i1 %3, label %4, label %16
 
 ; <label>:4:                                      ; preds = %0
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   %5 = load i32, i32* %1, align 4
   %6 = icmp eq i32 %5, 1
   br i1 %6, label %7, label %11
 
 ; <label>:7:                                      ; preds = %4
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   %8 = load i32, i32* @SpecificMem, align 4
   %9 = load i32, i32* @Sum, align 4
   %10 = add nsw i32 %9, %8
@@ -150,7 +150,7 @@ define void @func4() #0 {
   br label %15
 
 ; <label>:11:                                     ; preds = %4
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   %12 = load i32, i32* @SpecificMem, align 4
   %13 = load i32, i32* @Sum, align 4
   %14 = sub nsw i32 %13, %12
@@ -158,17 +158,17 @@ define void @func4() #0 {
   br label %15
 
 ; <label>:15:                                     ; preds = %11, %7
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   br label %16
 
 ; <label>:16:                                     ; preds = %15, %0
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   ret void
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
 define void @func5() #0 {
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   %1 = alloca i32, align 4
   store i32 1, i32* %1, align 4
   %2 = load i32, i32* @SpecificMem, align 4
@@ -176,13 +176,13 @@ define void @func5() #0 {
   br i1 %3, label %4, label %16
 
 ; <label>:4:                                      ; preds = %0
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   %5 = load i32, i32* %1, align 4
   %6 = icmp eq i32 %5, 1
   br i1 %6, label %7, label %11
 
 ; <label>:7:                                      ; preds = %4
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   %8 = load i32, i32* @SpecificMem, align 4
   %9 = load i32, i32* @Sum, align 4
   %10 = add nsw i32 %9, %8
@@ -190,7 +190,7 @@ define void @func5() #0 {
   br label %15
 
 ; <label>:11:                                     ; preds = %4
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   %12 = load i32, i32* @SpecificMem, align 4
   %13 = load i32, i32* @Sum, align 4
   %14 = sub nsw i32 %13, %12
@@ -198,18 +198,18 @@ define void @func5() #0 {
   br label %15
 
 ; <label>:15:                                     ; preds = %11, %7
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   br label %16
 
 ; <label>:16:                                     ; preds = %15, %0
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   ret void
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
 define i32 @main() #0 {
-  call void @sig_checker()
-  call void @sig_initializer()
+  call void @sig_checker(i32 2)
+  call void @sig_initializer(i32 2)
   %1 = alloca i32, align 4
   store i32 0, i32* %1, align 4
   store i32 1, i32* @SpecificMem, align 4
@@ -221,38 +221,41 @@ define i32 @main() #0 {
   br label %5
 
 ; <label>:5:                                      ; preds = %0
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   call void @func2()
   br label %6
 
 ; <label>:6:                                      ; preds = %5
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   call void @func3()
   br label %7
 
 ; <label>:7:                                      ; preds = %6
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   call void @func4()
   br label %8
 
 ; <label>:8:                                      ; preds = %7
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   call void @func5()
   br label %9
 
 ; <label>:9:                                      ; preds = %8
-  call void @sig_checker()
+  call void @sig_checker(i32 2)
   ret i32 0
 }
 
-declare void @sig_initializer()
+declare void @checker0(i32)
 
-declare void @sig_checker()
+declare void @sig_initializer(i32)
+
+declare void @sig_checker(i32)
 
 define void @CallcheckerSet() {
 entry:
-  call void @sig_initializer()
-  call void @sig_checker()
+  call void @sig_initializer(i32 1)
+  call void @sig_checker(i32 1)
+  call void @checker0(i32 1)
   ret void
 }
 

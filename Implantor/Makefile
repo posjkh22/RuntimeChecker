@@ -28,7 +28,7 @@ link:
 	-o test \
 	`llvm-config --cxxflags --libs --ldflags --system-libs`
 
-all: clean main printIRcode wrapper wTask wFunction wBasicBlock wInstruction path pathImpl checker transferIRcode CompactBBset
+all: clean main printIRcode wrapper wTask wFunction wBasicBlock wInstruction path pathImpl checker transferIRcode CompactBBSet
 	clang++ -std=c++11 \
 	$(LIB)/main.o \
 	$(LIB)/wrapper.o \

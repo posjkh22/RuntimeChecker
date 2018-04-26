@@ -5,7 +5,7 @@ target triple = "x86_64-unknown-linux-gnu"
 
 ; Function Attrs: noinline nounwind optnone uwtable
 define void @task() #0 {
-  call void @sig_checker()
+  call void @sig_checker(i32 65537)
   %1 = alloca i32, align 4
   %2 = alloca i32, align 4
   %3 = alloca i32, align 4
@@ -17,7 +17,7 @@ define void @task() #0 {
   br i1 %5, label %6, label %10
 
 ; <label>:6:                                      ; preds = %0
-  call void @sig_checker()
+  call void @sig_checker(i32 65538)
   %7 = load i32, i32* %1, align 4
   %8 = load i32, i32* %2, align 4
   %9 = sub nsw i32 %7, %8
@@ -25,7 +25,7 @@ define void @task() #0 {
   br label %14
 
 ; <label>:10:                                     ; preds = %0
-  call void @sig_checker()
+  call void @sig_checker(i32 65539)
   %11 = load i32, i32* %1, align 4
   %12 = load i32, i32* %2, align 4
   %13 = sub nsw i32 %11, %12
@@ -33,7 +33,7 @@ define void @task() #0 {
   br label %14
 
 ; <label>:14:                                     ; preds = %10, %6
-  call void @sig_checker()
+  call void @sig_checker(i32 65540)
   %15 = load i32, i32* %1, align 4
   %16 = add nsw i32 %15, 1
   store i32 %16, i32* %1, align 4
@@ -47,8 +47,8 @@ define void @task() #0 {
 
 ; Function Attrs: noinline nounwind optnone uwtable
 define i32 @main() #0 {
-  call void @sig_checker()
   call void @sig_initializer()
+  call void @sig_checker(i32 131073)
   %1 = alloca i32, align 4
   %2 = alloca i32, align 4
   %3 = alloca i32, align 4
@@ -60,7 +60,7 @@ define i32 @main() #0 {
   br i1 %5, label %6, label %9
 
 ; <label>:6:                                      ; preds = %0
-  call void @sig_checker()
+  call void @sig_checker(i32 131074)
   %7 = load i32, i32* %2, align 4
   %8 = add nsw i32 %7, 1
   store i32 %8, i32* %2, align 4
@@ -68,7 +68,7 @@ define i32 @main() #0 {
   br label %9
 
 ; <label>:9:                                      ; preds = %6, %0
-  call void @sig_checker()
+  call void @sig_checker(i32 131075)
   store i32 2, i32* %3, align 4
   %10 = load i32, i32* %2, align 4
   %11 = load i32, i32* %3, align 4
@@ -79,12 +79,12 @@ define i32 @main() #0 {
 
 declare void @sig_initializer()
 
-declare void @sig_checker()
+declare void @sig_checker(i32)
 
 define void @CallcheckerSet() {
 entry:
   call void @sig_initializer()
-  call void @sig_checker()
+  call void @sig_checker(i32 1)
   ret void
 }
 
